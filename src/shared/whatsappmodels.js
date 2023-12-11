@@ -102,10 +102,10 @@ function MessageLocation(number){
         "to": number,
         "type": "location",
         "location": {
-        "latitude": "-12.067158831865067",
-        "longitude": "-77.03377940839486",
-        "name": "Estadio Nacional del Perú",
-        "address": "C. José Díaz s/n, Cercado de Lima 15046"
+        "latitude": "-14.039668974264103",
+        "longitude": "-75.74920489191898",
+        "name": "Ausubel Casa",
+        "address": "X, 11004"
     }
         
     });

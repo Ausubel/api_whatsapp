@@ -1,13 +1,8 @@
+const fs = require("fs");
+const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 const https = require("https");
-function SendMessageWhatsApp(textResponse, number){
-    const data = JSON.stringify({
-        "messaging_product": "whatsapp",
-        "to": number,
-        "text": {
-            "body": textResponse
-        },
-        "type": "text"
-    });
+function SendMessageWhatsApp(data){
+    
     const options = {
         host: "graph.facebook.com",
         path: "/v17.0/196088416914493/messages",
@@ -25,7 +20,7 @@ function SendMessageWhatsApp(textResponse, number){
     });
 
     req.on("error", error => {
-        console.error(error);
+        console.error("aca hay "+error);
     });
 
     req.write(data);

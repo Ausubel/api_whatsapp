@@ -4,7 +4,7 @@ const whatsappService = require("../services/whatsappService");
 function Process(textUser, number){
     textUser= textUser.toLowerCase();
     var models = [];
-    
+
     if(textUser.includes("hola")){
         //SAUDAR
         var model = whatsappModel.MessageText("Hola, un gusto saludarte. 👋", number);
@@ -62,9 +62,6 @@ function Process(textUser, number){
     models.forEach(model => {
         whatsappService.SendMessageWhatsApp(model);
     });
-    
-
-
 }
 
 module.exports = {

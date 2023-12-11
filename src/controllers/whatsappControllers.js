@@ -35,7 +35,7 @@ const ReceivedMessage = (req, res) => {
             myConsole.log("text: " + text);
             myConsole.log("number: " + number);
             myConsole.log("messageObject: " + JSON.stringify(messageObject));
-            whatsappService.SendMessageWhatsApp("El usuario dijo "+ text, number);
+            processMessage.Process(text, number);
         }        
 
         res.send("EVENT_RECEIVED");
