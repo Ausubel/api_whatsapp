@@ -1,5 +1,5 @@
 const whatsappModel = require("../shared/whatsappmodels");
-const whatsappService = require("../services/whatsappService");
+const whatsappService = require("../services/whatsappService").default;
 
 function Process(textUser, number){
     textUser= textUser.toLowerCase();

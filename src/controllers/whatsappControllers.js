@@ -1,5 +1,4 @@
 const fs = require("fs");
-const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 const processMessage = require("../shared/processMessage");
 const whatsappService = require("../services/whatsappService");
 const VerifyToken = (req, res) => {
@@ -32,9 +31,9 @@ const ReceivedMessage = (req, res) => {
             var number = messages["from"];
 
             var text = GetTextUser(messages);
-            myConsole.log("text: " + text);
-            myConsole.log("number: " + number);
-            myConsole.log("messageObject: " + JSON.stringify(messageObject));
+            console.log("text: " + text);
+            console.log("number: " + number);
+            console.log("messageObject: " + JSON.stringify(messageObject));
             processMessage.Process(text, number);
         }        
 
@@ -61,10 +60,10 @@ function GetTextUser(messages){
         else if(typeInteractive == "list_reply"){
             text = (interactiveObject["list_reply"])["title"];
         }else{
-            myConsole.log("sin mensaje");
+            console.log("sin mensaje");
         }
     }else{
-        myConsole.log("sin mensaje");
+        console.log("sin mensaje");
     }
     return text;
 }
