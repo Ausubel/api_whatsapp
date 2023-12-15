@@ -1,6 +1,4 @@
-const fs = require("fs");
 const processMessage = require("../shared/processMessage");
-const whatsappService = require("../services/whatsappService");
 const VerifyToken = (req, res) => {
     
     try{
