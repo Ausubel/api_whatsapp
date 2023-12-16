@@ -17,14 +17,14 @@ const VerifyToken = (req, res) => {
     }
 }
 
-const ReceivedMessage = (req, res) => {
-    try{
-        var entry = (req.body["entry"])[0];
-        var changes = (entry["changes"])[0];
+const ReceivedMessage = async (req, res) => {
+    try {
+        var entry = req.body["entry"][0];
+        var changes = entry["changes"][0];
         var value = changes["value"];
         var messageObject = value["messages"];
 
-        if(typeof messageObject != "undefined"){
+        if (typeof messageObject !== "undefined") {
             var messages = messageObject[0];
             var number = messages["from"];
 
@@ -32,14 +32,16 @@ const ReceivedMessage = (req, res) => {
             console.log("text: " + text);
             console.log("number: " + number);
             console.log("messageObject: " + JSON.stringify(messageObject));
-            processMessage.Process(text, number);
-        }        
+
+            await processMessage.Process(text, number);
+        }
 
         res.send("EVENT_RECEIVED");
-    }catch(e){
-        res.send("EVENT_RECEIVED");
+    } catch (e) {
+        console.error(e);
+        res.status(400).send("BAD REQUEST");
     }
-}
+};
 
 function GetTextUser(messages){
     var text = "";
